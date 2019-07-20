@@ -11,6 +11,8 @@ import javafx.scene.input.KeyEvent;
 import repository.FileUserRepository;
 import service.LoginService;
 
+import java.io.IOException;
+
 public class LoginController {
     @FXML
     private TextField tf_password;
@@ -42,7 +44,7 @@ public class LoginController {
     }
 
     @FXML
-    void loginAction(ActionEvent event) {
+    void loginAction(ActionEvent event) throws IOException {
         loginService.credentials_check(tf_login, pf_password, tf_password, cb_show, lbl_login_validation, lbl_password_validation);
     }
 
@@ -57,7 +59,7 @@ public class LoginController {
     }
 
     @FXML
-    void keyLoginAction(KeyEvent keyEvent) {
+    void keyLoginAction(KeyEvent keyEvent) throws IOException {
         // sprawdzamy czy wciśnięty klawisz to enter za pomocą obiektu keyEvent
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             loginService.credentials_check(tf_login, pf_password, tf_password, cb_show, lbl_login_validation, lbl_password_validation);

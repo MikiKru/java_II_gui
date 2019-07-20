@@ -1,9 +1,15 @@
 package service;
 
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import repository.FileUserRepository;
 import repository.UserRepository;
+
+import java.io.IOException;
 
 public class LoginService {
 
@@ -28,14 +34,16 @@ public class LoginService {
         pf_password.clear();
         tf_password.clear();
     }
-
+    // pole statyczne przechowyjące login zalogowanego użytkownika
+    public static String logged_login;
     public void credentials_check(TextField tf_login,
                                    PasswordField pf_password,
                                    TextField tf_password,
                                    CheckBox cb_show, Label lbl_login_validation,
-                                   Label lbl_password_validation) {
+                                   Label lbl_password_validation) throws IOException {
         String login = tf_login.getText();
         String password = pf_password.getText();
+
         if(cb_show.isSelected()) {
             password = tf_password.getText();
         }
@@ -49,9 +57,21 @@ public class LoginService {
             lbl_login_validation.setText("login can't be empty");
             lbl_password_validation.setText("password can't be empty");
         } else if (log_me_in(login, password)) {
-            System.out.println("zalogowano");
             validation_clear(lbl_login_validation, lbl_password_validation);
             credential_clear(tf_login, pf_password, tf_password);
+            // update zalogowaneg loginu
+            logged_login = login;
+            // wywołanie okna event
+            Stage eventStage = new Stage();
+            // załadowanie pliku FXML do obiektu root
+            Parent root = FXMLLoader.load(getClass().getResource("/view/event.fxml"));
+            // przypisanie właściwości do obiektu okna aplikacji
+            eventStage.setTitle("Events");
+            eventStage.setScene(new Scene(root));
+            eventStage.show();
+            // zamknięcie okna logowania aplikacji
+            Stage primaryStage = (Stage) tf_login.getScene().getWindow();
+            primaryStage.close();
         } else {
             System.out.println("błąd logowania!");
             validation_clear(lbl_login_validation, lbl_password_validation);
