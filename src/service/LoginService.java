@@ -2,6 +2,8 @@ package service;
 
 import javafx.application.Platform;
 import javafx.scene.control.*;
+import repository.FileUserRepository;
+import repository.UserRepository;
 
 public class LoginService {
 
@@ -46,7 +48,7 @@ public class LoginService {
         } else if (login.equals("")) {
             lbl_login_validation.setText("login can't be empty");
             lbl_password_validation.setText("password can't be empty");
-        } else if (login.equals("admin") && password.equals("admin")) {
+        } else if (log_me_in(login, password)) {
             System.out.println("zalogowano");
             validation_clear(lbl_login_validation, lbl_password_validation);
             credential_clear(tf_login, pf_password, tf_password);
@@ -63,6 +65,10 @@ public class LoginService {
                 Platform.exit();
             }
         }
+    }
+    private UserRepository userRepository = new FileUserRepository();
+    private boolean log_me_in(String login, String password){
+        return userRepository.getAllUsers().stream().anyMatch(user -> user.getLogin().equals(login) && user.getPassword().equals(password));
     }
     // globalna liczba prób - zaczynamy od 3
     private int login_count = 3;

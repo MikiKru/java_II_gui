@@ -36,7 +36,7 @@ public class FileUserRepository implements UserRepository {
             e.printStackTrace();
         }
         // zwrócenie listy wszystkich użytkowników
-        System.out.println(users);
+//        System.out.println(users);
         return users;
     }
 }

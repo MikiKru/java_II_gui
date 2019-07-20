@@ -36,9 +36,9 @@ public class LoginController {
         // utworzenie nowej instancji klasy serwisu
         loginService = new LoginService();
         loginService.validation_clear(lbl_login_validation, lbl_password_validation);
-        // tymczasowe
-        FileUserRepository fileUserRepository = new FileUserRepository();
-        fileUserRepository.getAllUsers();
+//        // tymczasowe
+//        FileUserRepository fileUserRepository = new FileUserRepository();
+//        fileUserRepository.getAllUsers();
     }
 
     @FXML
