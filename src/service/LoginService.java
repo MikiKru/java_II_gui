@@ -52,8 +52,23 @@ public class LoginService {
         } else {
             System.out.println("błąd logowania!");
             validation_clear(lbl_login_validation, lbl_password_validation);
-            alert_window(Alert.AlertType.ERROR, "Credentials faild", "Credentials faild", "Check your login or password!");
+            int probes = login_counter();
+            alert_window(Alert.AlertType.ERROR,
+                    "Credentials faild",
+                    "Credentials faild",
+                    "Check your login or password! Probes to disable: " + probes );
+            if(probes == 0){
+                // systemowe zamknięcie okna aplikacji - tak jak X
+                System.exit(0);
+            }
         }
+    }
+    // globalna liczba prób - zaczynamy od 3
+    private int login_count = 3;
+    // metoda dekrementująca liczbę prób z 3 do 0
+    private int login_counter(){
+        login_count --;
+        return login_count;
     }
     private void alert_window(Alert.AlertType alertType, String title, String header, String content){
         Alert alert = new Alert(alertType);
@@ -62,4 +77,5 @@ public class LoginService {
         alert.setContentText(content);
         alert.show();
     }
+
 }
