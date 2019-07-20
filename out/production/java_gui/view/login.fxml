@@ -18,6 +18,7 @@
       </Label>
       <TextField fx:id="tf_login" layoutX="182.0" layoutY="99.0" prefHeight="26.0" prefWidth="235.0" />
       <PasswordField fx:id="pf_password" layoutX="182.0" layoutY="156.0" prefHeight="26.0" prefWidth="235.0" />
+      <TextField fx:id="tf_password" layoutX="182.0" layoutY="156.0" prefHeight="26.0" prefWidth="235.0" visible="false" />
       <CheckBox fx:id="cb_show" layoutX="182.0" layoutY="210.0" mnemonicParsing="false" onAction="#showAction" text="CheckBox" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />

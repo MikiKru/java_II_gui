@@ -6,8 +6,11 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import service.LoginService;
 
 public class LoginController {
+    @FXML
+    private TextField tf_password;
 
     @FXML
     private TextField tf_login;
@@ -23,38 +26,13 @@ public class LoginController {
 
     @FXML
     private Label lbl_password_validation;
+    // globalny obiekt klasy serwisu -> do logiki biznesowej
+    private LoginService loginService;
 
     public void initialize() {
         validation_clear();
-    }
-
-    private void validation_clear() {
-        lbl_login_validation.setText("");
-        lbl_password_validation.setText("");
-    }
-
-    private void credential_clear() {
-        tf_login.clear();
-        pf_password.clear();
-    }
-    private void credentials_check(String login, String password){
-        if (login.equals("") && !password.equals("")) {
-            lbl_login_validation.setText("login can't be empty");
-            lbl_password_validation.setText("");
-        } else if (!login.equals("") && password.equals("")) {
-            lbl_login_validation.setText("");
-            lbl_password_validation.setText("password can't be empty");
-        } else if (login.equals("")) {
-            lbl_login_validation.setText("login can't be empty");
-            lbl_password_validation.setText("password can't be empty");
-        } else if (login.equals("admin") && password.equals("admin")) {
-            System.out.println("zalogowano");
-            validation_clear();
-            credential_clear();
-        } else {
-            System.out.println("błąd logowania!");
-            validation_clear();
-        }
+        // utworzenie nowej instancji klasy serwisu
+        loginService = new LoginService();
     }
     @FXML
     void loginAction(ActionEvent event) {
@@ -65,9 +43,9 @@ public class LoginController {
     void registerAction(ActionEvent event) {
 
     }
-
+    // metoda do sterowania kontrolkami PasswordField i TextField -> dot. wodoczności hasła
     @FXML
     void showAction(ActionEvent event) {
-
+        loginService.password_show(cb_show,tf_password,pf_password);
     }
 }
