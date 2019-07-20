@@ -1,5 +1,6 @@
 package service;
 
+import javafx.application.Platform;
 import javafx.scene.control.*;
 
 public class LoginService {
@@ -59,7 +60,7 @@ public class LoginService {
                     "Check your login or password! Probes to disable: " + probes );
             if(probes == 0){
                 // systemowe zamknięcie okna aplikacji - tak jak X
-                System.exit(0);
+                Platform.exit();
             }
         }
     }
