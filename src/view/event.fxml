@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -12,5 +21,45 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <TabPane layoutY="75.0" prefHeight="326.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="submit">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ComboBox layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="257.0" promptText="choose the event" />
+                        <TextArea layoutX="286.0" layoutY="14.0" prefHeight="269.0" prefWidth="298.0" promptText="choose the event to obtain the agenda" />
+                        <Button layoutX="89.0" layoutY="63.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="submit" />
+                        <ImageView fitHeight="142.0" fitWidth="278.0" layoutX="4.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/sda_logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="confirm/reject">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="222.0" prefWidth="582.0">
+                     <children>
+                        <TableView prefHeight="200.0" prefWidth="600.0">
+                          <columns>
+                            <TableColumn minWidth="0.0" prefWidth="100.0" text="login" />
+                            <TableColumn minWidth="200.0" prefWidth="300.0" text="event" />
+                              <TableColumn prefWidth="200.0" text="confirm/reject" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="226.0" layoutY="217.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" text="confirm">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
