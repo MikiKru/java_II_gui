@@ -1,9 +1,6 @@
 package service;
 
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class LoginService {
 
@@ -55,7 +52,14 @@ public class LoginService {
         } else {
             System.out.println("błąd logowania!");
             validation_clear(lbl_login_validation, lbl_password_validation);
+            alert_window(Alert.AlertType.ERROR, "Credentials faild", "Credentials faild", "Check your login or password!");
         }
     }
-
+    private void alert_window(Alert.AlertType alertType, String title, String header, String content){
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.show();
+    }
 }

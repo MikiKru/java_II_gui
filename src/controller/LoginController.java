@@ -6,6 +6,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import service.LoginService;
 
 public class LoginController {
@@ -32,13 +34,15 @@ public class LoginController {
     public void initialize() {
         // utworzenie nowej instancji klasy serwisu
         loginService = new LoginService();
-        loginService.validation_clear(lbl_login_validation,lbl_password_validation);
+        loginService.validation_clear(lbl_login_validation, lbl_password_validation);
 
     }
+
     @FXML
     void loginAction(ActionEvent event) {
-        loginService.credentials_check(tf_login,pf_password,tf_password,cb_show,lbl_login_validation,lbl_password_validation);
+        loginService.credentials_check(tf_login, pf_password, tf_password, cb_show, lbl_login_validation, lbl_password_validation);
     }
+
     @FXML
     void registerAction(ActionEvent event) {
 
@@ -46,6 +50,14 @@ public class LoginController {
     // metoda do sterowania kontrolkami PasswordField i TextField -> dot. wodoczności hasła
     @FXML
     void showAction(ActionEvent event) {
-        loginService.password_show(cb_show,tf_password,pf_password);
+        loginService.password_show(cb_show, tf_password, pf_password);
+    }
+
+    @FXML
+    void keyLoginAction(KeyEvent keyEvent) {
+        // sprawdzamy czy wciśnięty klawisz to enter za pomocą obiektu keyEvent
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            loginService.credentials_check(tf_login, pf_password, tf_password, cb_show, lbl_login_validation, lbl_password_validation);
+        }
     }
 }
