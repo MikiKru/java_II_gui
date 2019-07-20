@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import repository.FileUserRepository;
 import service.LoginService;
 
 public class LoginController {
@@ -35,7 +36,9 @@ public class LoginController {
         // utworzenie nowej instancji klasy serwisu
         loginService = new LoginService();
         loginService.validation_clear(lbl_login_validation, lbl_password_validation);
-
+        // tymczasowe
+        FileUserRepository fileUserRepository = new FileUserRepository();
+        fileUserRepository.getAllUsers();
     }
 
     @FXML
