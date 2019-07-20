@@ -30,15 +30,15 @@ public class LoginController {
     private LoginService loginService;
 
     public void initialize() {
-        validation_clear();
         // utworzenie nowej instancji klasy serwisu
         loginService = new LoginService();
+        loginService.validation_clear(lbl_login_validation,lbl_password_validation);
+
     }
     @FXML
     void loginAction(ActionEvent event) {
-        credentials_check(tf_login.getText(), pf_password.getText());
+        loginService.credentials_check(tf_login,pf_password,tf_password,cb_show,lbl_login_validation,lbl_password_validation);
     }
-
     @FXML
     void registerAction(ActionEvent event) {
 
