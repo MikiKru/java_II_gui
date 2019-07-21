@@ -55,8 +55,8 @@ public class EventController {
     }
 
     @FXML
-    void submitAction(ActionEvent event) {
-
+    void submitAction(ActionEvent event) throws IOException {
+        eventService.save(LoginService.logged_user, cb_event.getValue());
     }
     @FXML
     private void logoutAction(ActionEvent actionEvent) throws IOException {
@@ -68,7 +68,7 @@ public class EventController {
     }
 
     private EventService eventService;
-    public void initialize(){
+    public void initialize() throws IOException {
         // inicjalizacja obiektu klasy event service
         eventService = new EventService();
         lbl_login.setText(lbl_login.getText() + LoginService.logged_user.getLogin());

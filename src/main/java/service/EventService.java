@@ -10,8 +10,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.Event;
+import model.User;
+import model.UserEvent;
 import repository.EventRepository;
 import repository.FileEventRepository;
+import repository.FileUserEventsRepository;
+import repository.UserEventRepository;
+
 import java.util.List;
 
 import java.io.IOException;
@@ -20,10 +25,12 @@ import java.util.stream.Collectors;
 public class EventService {
     private AlertService alertService;
     private EventRepository eventRepository;
+    private UserEventRepository userEventRepository;
     // inicjalizacja obiektów dostarczających obsługę okein dialodowych
-    public EventService() {
+    public EventService() throws IOException {
         alertService = new AlertService();
         eventRepository = new FileEventRepository();
+        userEventRepository = new FileUserEventsRepository();
     }
 
     public void closeWindow(){
@@ -58,6 +65,9 @@ public class EventService {
     }
     public Event getEventByEventName(String event_name){
         return eventRepository.getEventByEventName(event_name).get();
+    }
+    public void save(User user, String event_name) throws IOException {
+     userEventRepository.save(new UserEvent(user.getLogin(), event_name));
     }
 
 }
