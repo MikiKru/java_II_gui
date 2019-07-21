@@ -76,7 +76,7 @@ public class LoginService {
             System.out.println("błąd logowania!");
             validation_clear(lbl_login_validation, lbl_password_validation);
             int probes = login_counter();
-            alert_window(Alert.AlertType.ERROR,
+            new AlertService().window_alert(Alert.AlertType.ERROR,
                     "Credentials faild",
                     "Credentials faild",
                     "Check your login or password! Probes to disable: " + probes );
@@ -97,13 +97,5 @@ public class LoginService {
         login_count --;
         return login_count;
     }
-    private void alert_window(Alert.AlertType alertType, String title, String header, String content){
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        alert.show();
-    }
-
 
 }

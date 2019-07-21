@@ -3,6 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -16,20 +19,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EventController">
    <children>
-      <Label fx:id="lbl_login" layoutX="14.0" layoutY="14.0" prefHeight="38.0" prefWidth="566.0" text="Login: ">
+      <Label fx:id="lbl_login" layoutX="14.0" layoutY="30.0" prefHeight="38.0" prefWidth="566.0" text="Login: ">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <TabPane layoutY="75.0" prefHeight="326.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="submit">
+          <Tab fx:id="tab_submit" text="submit">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ComboBox layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="257.0" promptText="choose the event" />
-                        <TextArea layoutX="286.0" layoutY="14.0" prefHeight="269.0" prefWidth="298.0" promptText="choose the event to obtain the agenda" />
-                        <Button layoutX="89.0" layoutY="63.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="submit" />
+                        <ComboBox fx:id="cb_event" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="257.0" promptText="choose the event" />
+                        <TextArea fx:id="ta_description" layoutX="286.0" layoutY="14.0" prefHeight="269.0" prefWidth="298.0" promptText="choose the event to obtain the agenda" />
+                        <Button layoutX="89.0" layoutY="63.0" mnemonicParsing="false" onAction="#submitAction" prefHeight="26.0" prefWidth="107.0" text="submit" />
                         <ImageView fitHeight="142.0" fitWidth="278.0" layoutX="4.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/sda_logo.png" />
@@ -39,18 +42,18 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="confirm/reject">
+          <Tab fx:id="tab_confirm" text="confirm/reject">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="222.0" prefWidth="582.0">
                      <children>
-                        <TableView prefHeight="200.0" prefWidth="600.0">
+                        <TableView fx:id="table_confirm" prefHeight="200.0" prefWidth="600.0">
                           <columns>
-                            <TableColumn minWidth="0.0" prefWidth="100.0" text="login" />
-                            <TableColumn minWidth="200.0" prefWidth="300.0" text="event" />
-                              <TableColumn prefWidth="200.0" text="confirm/reject" />
+                            <TableColumn fx:id="c_login" minWidth="0.0" prefWidth="100.0" text="login" />
+                            <TableColumn fx:id="c_event" minWidth="200.0" prefWidth="300.0" text="event" />
+                              <TableColumn fx:id="c_confirm" prefWidth="200.0" text="confirm/reject" />
                           </columns>
                         </TableView>
-                        <Button layoutX="226.0" layoutY="217.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" text="confirm">
+                        <Button fx:id="btn_confirm" layoutX="226.0" layoutY="217.0" mnemonicParsing="false" onAction="#confirmAction" prefHeight="38.0" prefWidth="146.0" text="confirm">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -61,5 +64,15 @@
           </Tab>
         </tabs>
       </TabPane>
+      <MenuBar layoutY="-3.0" prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#logoutAction" text="logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#exitAction" text="exit" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
