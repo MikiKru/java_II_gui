@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.User;
 import repository.FileUserRepository;
 import repository.UserRepository;
 
@@ -35,7 +36,7 @@ public class LoginService {
         tf_password.clear();
     }
     // pole statyczne przechowyjące login zalogowanego użytkownika
-    public static String logged_login;
+//    public static String logged_login;
     public void credentials_check(TextField tf_login,
                                    PasswordField pf_password,
                                    TextField tf_password,
@@ -59,8 +60,8 @@ public class LoginService {
         } else if (log_me_in(login, password)) {
             validation_clear(lbl_login_validation, lbl_password_validation);
             credential_clear(tf_login, pf_password, tf_password);
-            // update zalogowaneg loginu
-            logged_login = login;
+            // przypisanie do statycznego obiektu User zalogowanego użytkownika
+            logged_user = userRepository.getUserByLogin(login).get();
             // wywołanie okna event
             Stage eventStage = new Stage();
             // załadowanie pliku FXML do obiektu root
@@ -87,9 +88,11 @@ public class LoginService {
         }
     }
     private UserRepository userRepository = new FileUserRepository();
+    public static User logged_user;
     private boolean log_me_in(String login, String password){
         return userRepository.getAllUsers().stream().anyMatch(user -> user.getLogin().equals(login) && user.getPassword().equals(password));
     }
+
     // globalna liczba prób - zaczynamy od 3
     private int login_count = 3;
     // metoda dekrementująca liczbę prób z 3 do 0

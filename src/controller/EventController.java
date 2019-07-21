@@ -68,7 +68,7 @@ public class EventController {
     public void initialize(){
         // inicjalizacja obiektu klasy event service
         eventService = new EventService();
-        lbl_login.setText(lbl_login.getText() + LoginService.logged_login);
+        lbl_login.setText(lbl_login.getText() + LoginService.logged_user.getLogin());
     }
 
 }

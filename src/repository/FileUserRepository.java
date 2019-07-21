@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class FileUserRepository implements UserRepository {
@@ -36,7 +37,10 @@ public class FileUserRepository implements UserRepository {
             e.printStackTrace();
         }
         // zwrócenie listy wszystkich użytkowników
-//        System.out.println(users);
         return users;
+    }
+    @Override
+    public Optional<User> getUserByLogin(String login) {
+        return getAllUsers().stream().filter(user -> user.getLogin().equals(login)).findAny();
     }
 }
