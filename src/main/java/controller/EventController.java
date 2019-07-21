@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,7 +26,7 @@ public class EventController {
     private Tab tab_submit;
 
     @FXML
-    private ComboBox<?> cb_event;
+    private ComboBox<String> cb_event;
 
     @FXML
     private TextArea ta_description;
@@ -73,6 +75,9 @@ public class EventController {
         if(LoginService.logged_user.getRole().equals(Role.ROLE_USER)){
             tab_confirm.setDisable(true);
         }
+        // inicjalizacja zawartości combobox
+        ObservableList<String> events_to_combo = FXCollections.observableArrayList(eventService.getEventsName());
+        cb_event.setItems(events_to_combo);
     }
 
 }
