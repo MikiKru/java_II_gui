@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.UserEvent;
 import model.enums.Role;
 import service.EventService;
@@ -64,7 +65,7 @@ public class EventController {
 
         // inicjalizacja tabelki administratora
         // ustawienie właściwości dla poszczególnych kolumn
-        c_login.setCellValueFactory(new PropertyValueFactory<>("id"));
+        c_login.setCellValueFactory(new PropertyValueFactory<>("login"));
         c_event.setCellValueFactory(new PropertyValueFactory<>("event_name"));
         c_confirm.setCellValueFactory(new PropertyValueFactory<>("confirm"));
         // przypisanie danych do obiektu tabeli
@@ -82,6 +83,7 @@ public class EventController {
     @FXML
     void submitAction(ActionEvent event) throws IOException {
         eventService.save(LoginService.logged_user, cb_event.getValue());
+        initialize();
     }
     @FXML
     private void logoutAction(ActionEvent actionEvent) throws IOException {
@@ -98,5 +100,17 @@ public class EventController {
     private void selectEventAction(ActionEvent actionEvent) {
         String description = eventService.getEventByEventName(cb_event.getValue()).getEvent_description();
         ta_description.setText(description);
+    }
+    boolean selected_confirm;
+    int selected_id;
+    @FXML
+    private void selectRowAction(MouseEvent mouseEvent) {
+         selected_confirm = table_confirm.getSelectionModel().getSelectedItem().isConfirm();
+         selected_id = table_confirm.getSelectionModel().getSelectedItem().getId();
+         if(selected_confirm){
+             btn_confirm.setText("reject");
+         } else {
+             btn_confirm.setText("confirm");
+         }
     }
 }

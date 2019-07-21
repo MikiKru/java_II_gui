@@ -20,13 +20,15 @@ public class FileUserEventsRepository implements UserEventRepository {
         // obiekt do odczytywania zawortości pliku
         userevent_reader = new File(userevent_path);
         // obiekt do zapisywania do pliku
-        userevent_writer = new FileWriter("C:\\Users\\PROXIMO\\Desktop\\GUI\\java_gui\\src\\main\\resources\\file\\users_events.csv", true);
-    }
+         }
     @Override
     public void save(UserEvent userEvent) throws IOException {
-        userEvent.setId(count()+1);
+        users_events.add(userEvent);
+        userevent_writer = new FileWriter("C:\\Users\\PROXIMO\\Desktop\\GUI\\java_gui\\src\\main\\resources\\file\\users_events.csv", true);
+        userEvent.setId(users_events.size()+1);
         userevent_writer.write(userEvent.toString()+"\n");
-        userevent_writer.flush();
+        userevent_writer.close();
+
     }
 
     private List<UserEvent> users_events = new ArrayList<>();
@@ -36,7 +38,7 @@ public class FileUserEventsRepository implements UserEventRepository {
         // wydobycie zawartości pliku
         try {
             Scanner file_content = new Scanner(userevent_reader);
-            file_content.nextLine();
+            users_events.clear();
             while (file_content.hasNextLine()) {
                 // preprocessing pliku -> cięce po ';'
                 String users_events_array [] = file_content.nextLine().split(";");
@@ -51,12 +53,12 @@ public class FileUserEventsRepository implements UserEventRepository {
                 users_events.add(userEvent);
             }
         } catch (Exception e) {
-            return new ArrayList<>();
+
         }
         // zwrócenie listy wszystkich użytkowników
         return users_events;
     }
-
+    private int static_id;
     @Override
     public int count() {
         return getAllUserEvents().size() ;
