@@ -56,5 +56,8 @@ public class EventService {
                 .map(event -> event.getEvent_name())
                 .collect(Collectors.toList());
     }
+    public Event getEventByEventName(String event_name){
+        return eventRepository.getEventByEventName(event_name).get();
+    }
 
 }

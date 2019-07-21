@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 // Klasa mapująca dane z pliku do listy obiektów modelu Event
@@ -47,4 +48,9 @@ public class FileEventRepository implements EventRepository {
         // zwrócenie listy wszystkich użytkowników
         return events;
     }
+    @Override
+    public Optional<Event> getEventByEventName(String event_name) {
+        return getAllEvents().stream().filter(event -> event.getEvent_name().equals(event_name)).findAny();
+    }
+
 }

@@ -79,5 +79,9 @@ public class EventController {
         ObservableList<String> events_to_combo = FXCollections.observableArrayList(eventService.getEventsName());
         cb_event.setItems(events_to_combo);
     }
-
+    @FXML
+    private void selectEventAction(ActionEvent actionEvent) {
+        String description = eventService.getEventByEventName(cb_event.getValue()).getEvent_description();
+        ta_description.setText(description);
+    }
 }
