@@ -9,6 +9,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import model.enums.Role;
 import service.EventService;
 import service.LoginService;
 
@@ -69,6 +70,9 @@ public class EventController {
         // inicjalizacja obiektu klasy event service
         eventService = new EventService();
         lbl_login.setText(lbl_login.getText() + LoginService.logged_user.getLogin());
+        if(LoginService.logged_user.getRole().equals(Role.ROLE_USER)){
+            tab_confirm.setDisable(true);
+        }
     }
 
 }
