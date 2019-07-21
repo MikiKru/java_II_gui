@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java_gui/repository/FileUserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java_gui/repository/FileUserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java_gui/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java_gui/service/LoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/java_gui/view/event.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java_gui/view/event.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/event.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/event.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/EventService.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,70 +59,92 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/EventController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="61" column="35" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1147#1148#0" expanded="true" />
-                <element signature="e#1174#1175#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/LoginService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="78" column="43" lean-forward="true" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/EventService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#188#189#0" expanded="true" />
-                <element signature="e#236#237#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/service/AlertService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="10" column="10" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/event.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="70" column="65" selection-start-line="70" selection-start-column="65" selection-end-line="70" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.62684566">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/controller/EventController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="395">
+                  <caret line="63" column="35" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1147#1148#0" expanded="true" />
+                    <element signature="e#1174#1175#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/service/LoginService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="422">
+                  <caret line="73" column="33" lean-forward="true" selection-start-line="64" selection-start-column="12" selection-end-line="73" selection-end-column="33" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/service/EventService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="341">
+                  <caret line="35" column="73" selection-start-line="35" selection-start-column="73" selection-end-line="35" selection-end-column="73" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#188#189#0" expanded="true" />
+                    <element signature="e#236#237#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/service/AlertService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="179">
+                  <caret line="10" column="10" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="10" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/view/event.fxml">
+              <provider editor-type-id="JavaFX-Scene-Builder" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="343">
+                  <caret line="70" column="65" selection-start-line="70" selection-start-column="65" selection-end-line="70" selection-end-column="65" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/controller/EventController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="287">
+                  <caret line="59" column="26" lean-forward="true" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1147#1148#0" expanded="true" />
+                    <element signature="e#1189#1190#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -229,7 +246,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563696459177" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563696779945" />
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
@@ -328,12 +345,12 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-      <workItem from="1563607475159" duration="22675000" />
+      <workItem from="1563607475159" duration="23313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23977000" />
+    <option name="totallyTimeSpent" value="24615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -502,16 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/LoginService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="78" column="43" lean-forward="true" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/AlertService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -522,10 +529,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/service/LoginService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="73" column="33" lean-forward="true" selection-start-line="64" selection-start-column="12" selection-end-line="73" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/EventService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+        <state relative-caret-position="341">
+          <caret line="35" column="73" selection-start-line="35" selection-start-column="73" selection-end-line="35" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#188#189#0" expanded="true" />
@@ -536,12 +553,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/EventController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="61" column="35" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
+        <state relative-caret-position="287">
+          <caret line="59" column="26" lean-forward="true" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1147#1148#0" expanded="true" />
-            <element signature="e#1174#1175#0" expanded="true" />
+            <element signature="e#1189#1190#0" expanded="true" />
           </folding>
         </state>
       </provider>

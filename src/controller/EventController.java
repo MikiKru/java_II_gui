@@ -12,6 +12,8 @@ import javafx.scene.control.TextArea;
 import service.EventService;
 import service.LoginService;
 
+import java.io.IOException;
+
 public class EventController {
 
     @FXML
@@ -54,8 +56,8 @@ public class EventController {
 
     }
     @FXML
-    private void logoutAction(ActionEvent actionEvent) {
-
+    private void logoutAction(ActionEvent actionEvent) throws IOException {
+        eventService.logout(lbl_login);
     }
     @FXML
     private void exitAction(ActionEvent actionEvent) {
