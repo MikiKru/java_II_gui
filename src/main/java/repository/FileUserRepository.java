@@ -12,18 +12,21 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class FileUserRepository implements UserRepository {
-    private File file;
-
+    private File credential_file;
+    private String credential_path;
     public FileUserRepository() {
         // połaczenie z istniejącym plikiem
-        file = new File("C:\\Users\\PROXIMO\\Desktop\\GUI\\java_gui\\src\\credentials.csv");
+        credential_path = this.getClass()
+                .getClassLoader()
+                .getResource("file/credentials.csv").getFile();
+        credential_file = new File(credential_path);
     }
     private List<User> users = new ArrayList<>();
     @Override
     public List<User> getAllUsers() {
         // wydobycie zawartości pliku
         try {
-            Scanner file_content = new Scanner(file);
+            Scanner file_content = new Scanner(credential_file);
             file_content.nextLine();
             while (file_content.hasNextLine()) {
                 // preprocessing pliku -> cięce po ';'
