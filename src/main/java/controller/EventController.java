@@ -11,6 +11,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.UserEvent;
 import model.enums.Role;
 import service.EventService;
 import service.LoginService;
@@ -35,19 +37,42 @@ public class EventController {
     private Tab tab_confirm;
 
     @FXML
-    private TableView<?> table_confirm;
+    private TableView<UserEvent> table_confirm;
 
     @FXML
-    private TableColumn<?, ?> c_login;
+    private TableColumn<UserEvent, String> c_login;
 
     @FXML
-    private TableColumn<?, ?> c_event;
+    private TableColumn<UserEvent, String> c_event;
 
     @FXML
-    private TableColumn<?, ?> c_confirm;
+    private TableColumn<UserEvent, Boolean> c_confirm;
 
     @FXML
     private Button btn_confirm;
+
+    public void initialize() throws IOException {
+        // inicjalizacja obiektu klasy event service
+        eventService = new EventService();
+        lbl_login.setText(lbl_login.getText() + LoginService.logged_user.getLogin());
+        if(LoginService.logged_user.getRole().equals(Role.ROLE_USER)){
+            tab_confirm.setDisable(true);
+        }
+        // inicjalizacja zawartości combobox
+        ObservableList<String> events_to_combo = FXCollections.observableArrayList(eventService.getEventsName());
+        cb_event.setItems(events_to_combo);
+
+        // inicjalizacja tabelki administratora
+        // ustawienie właściwości dla poszczególnych kolumn
+        c_login.setCellValueFactory(new PropertyValueFactory<>("id"));
+        c_event.setCellValueFactory(new PropertyValueFactory<>("event_name"));
+        c_confirm.setCellValueFactory(new PropertyValueFactory<>("confirm"));
+        // przypisanie danych do obiektu tabeli
+        table_confirm.setItems(FXCollections.observableArrayList(eventService.getAllUserEvents()));
+    }
+
+
+
 
     @FXML
     void confirmAction(ActionEvent event) {
@@ -68,17 +93,7 @@ public class EventController {
     }
 
     private EventService eventService;
-    public void initialize() throws IOException {
-        // inicjalizacja obiektu klasy event service
-        eventService = new EventService();
-        lbl_login.setText(lbl_login.getText() + LoginService.logged_user.getLogin());
-        if(LoginService.logged_user.getRole().equals(Role.ROLE_USER)){
-            tab_confirm.setDisable(true);
-        }
-        // inicjalizacja zawartości combobox
-        ObservableList<String> events_to_combo = FXCollections.observableArrayList(eventService.getEventsName());
-        cb_event.setItems(events_to_combo);
-    }
+
     @FXML
     private void selectEventAction(ActionEvent actionEvent) {
         String description = eventService.getEventByEventName(cb_event.getValue()).getEvent_description();

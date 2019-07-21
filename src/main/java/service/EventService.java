@@ -81,4 +81,7 @@ public class EventService {
                  "You have to wait on confirmation of your submission");
      }
     }
+    public List<UserEvent> getAllUserEvents(){
+        return userEventRepository.getAllUserEvents();
+    }
 }
