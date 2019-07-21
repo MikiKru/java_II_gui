@@ -27,13 +27,15 @@ public class FileEventRepository implements EventRepository {
     private List<Event> events = new ArrayList<>();
     @Override
     public List<Event> getAllEvents() {
+
         // wydobycie zawartości pliku
         try {
             Scanner file_content = new Scanner(event_file);
             file_content.nextLine();
             while (file_content.hasNextLine()) {
                 // preprocessing pliku -> cięce po ';'
-                String events_array [] = file_content.next().split(";");
+                String events_array [] = file_content.nextLine().split(";");
+
                 // wprowadzenie wydobytych pól z pliku do modelu
                 Event event = new Event(events_array[0], events_array[1], Integer.valueOf(events_array[2]));
                 // dodanie instancji modelu do listy
