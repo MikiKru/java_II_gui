@@ -9,4 +9,5 @@ public interface UserEventRepository {
 
     void save(UserEvent userEvent) throws IOException;
     List<UserEvent> getAllUserEvents();
+    int count();
 }

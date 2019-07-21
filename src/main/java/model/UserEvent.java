@@ -11,6 +11,13 @@ public class UserEvent {
     private boolean confirm;
     private int event_capacity;
 
+    public UserEvent(int id, String login, String event_name, boolean confirm) {
+        this.id = id;
+        this.login = login;
+        this.event_name = event_name;
+        this.confirm = confirm;
+    }
+
     public UserEvent(String login, String event_name) {
         this.login = login;
         this.event_name = event_name;

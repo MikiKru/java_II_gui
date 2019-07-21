@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -67,7 +68,17 @@ public class EventService {
         return eventRepository.getEventByEventName(event_name).get();
     }
     public void save(User user, String event_name) throws IOException {
-     userEventRepository.save(new UserEvent(user.getLogin(), event_name));
-    }
 
+     if(alertService.confirmation_alert(
+             "Save on event",
+             "Save on event",
+             "You've just save on event "+ event_name).get() == ButtonType.OK){
+         userEventRepository.save(new UserEvent(user.getLogin(), event_name));
+         alertService.window_alert(
+                 Alert.AlertType.INFORMATION,
+                 "You are submitted",
+                 "You are submited",
+                 "You have to wait on confirmation of your submission");
+     }
+    }
 }

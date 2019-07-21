@@ -1,12 +1,12 @@
 package repository;
 
+import model.Event;
 import model.UserEvent;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class FileUserEventsRepository implements UserEventRepository {
 
@@ -24,12 +24,41 @@ public class FileUserEventsRepository implements UserEventRepository {
     }
     @Override
     public void save(UserEvent userEvent) throws IOException {
+        userEvent.setId(count()+1);
         userevent_writer.write(userEvent.toString()+"\n");
         userevent_writer.flush();
     }
 
+    private List<UserEvent> users_events = new ArrayList<>();
     @Override
     public List<UserEvent> getAllUserEvents() {
-        return null;
+
+        // wydobycie zawartości pliku
+        try {
+            Scanner file_content = new Scanner(userevent_reader);
+            file_content.nextLine();
+            while (file_content.hasNextLine()) {
+                // preprocessing pliku -> cięce po ';'
+                String users_events_array [] = file_content.nextLine().split(";");
+
+                // wprowadzenie wydobytych pól z pliku do modelu
+                UserEvent userEvent = new UserEvent(
+                        Integer.valueOf(users_events_array[0]),
+                        users_events_array[1],
+                        users_events_array[2],
+                        Boolean.valueOf(users_events_array[3]));
+                // dodanie instancji modelu do listy
+                users_events.add(userEvent);
+            }
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
+        // zwrócenie listy wszystkich użytkowników
+        return users_events;
+    }
+
+    @Override
+    public int count() {
+        return getAllUserEvents().size() == 0 ? -1 : getAllUserEvents().size() ;
     }
 }
