@@ -59,6 +59,6 @@ public class FileUserEventsRepository implements UserEventRepository {
 
     @Override
     public int count() {
-        return getAllUserEvents().size() == 0 ? -1 : getAllUserEvents().size() ;
+        return getAllUserEvents().size() ;
     }
 }
